@@ -7,9 +7,10 @@ const four = document.querySelector('.four');
 const home = document.querySelector('.home');
 const cancel = document.querySelector('.cancel');
 const modal = document.querySelector('.modal');
+const circle = document.querySelector('.circle');
 
 document.addEventListener('keydown',press);
-document.addEventListener('DOMContentLoaded',domLoaded)
+circle.addEventListener('click',press);
 
 function colorRandom(){
     let x = Math.random() * 256;
@@ -24,7 +25,7 @@ function colorRandom(){
 }
 
 function press(e){
-    if(e.key === ' '){
+    if(e.key === ' ' || e.type === 'click'){
         one.style.backgroundColor = colorRandom();
         one.textContent = one.style.backgroundColor;
 
@@ -40,9 +41,12 @@ function press(e){
 };
 
 
-function domLoaded(){
-    cancel.addEventListener('click',function(){
-        modal.style.display = 'none';
-    })
 
-}
+cancel.addEventListener('click',function(e){
+    console.log(typeof e.type);
+
+    modal.style.display = 'none';
+})
+
+
+
